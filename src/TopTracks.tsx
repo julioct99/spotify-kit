@@ -1,13 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { AuthObject } from './App'
+import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from './App'
 
 interface TopTracksProps {
   auth: AuthObject
 }
-
-const BASE_SPOTIFY_API_URI = 'https://api.spotify.com/v1'
-const MY_TOP_TRACKS_ENDPOINT = `${BASE_SPOTIFY_API_URI}/me/top/tracks/?time_range=long_term`
 
 const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
   const [topTracks, setTopTracks] = useState<SpotifyApi.TrackObjectFull[]>()
