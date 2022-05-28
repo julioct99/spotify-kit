@@ -54,7 +54,7 @@ function App() {
     localStorage.setItem('accessToken', access_token)
     localStorage.setItem('tokenType', token_type)
     localStorage.setItem('expiresIn', expires_in)
-  })
+  }, [])
 
   const loadTopTracks = async () => {
     const url = MY_TOP_TRACKS_ENDPOINT
