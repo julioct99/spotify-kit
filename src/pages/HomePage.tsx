@@ -6,7 +6,8 @@ const BASE_SPOTIFY_ACCOUNTS_URI = 'https://accounts.spotify.com'
 const AUTHORIZE_ENDPOINT = `${BASE_SPOTIFY_ACCOUNTS_URI}/authorize`
 
 const CLIENT_ID = '5e6cead388534d1d86fc41a02419a791'
-const REDIRECT_URI = 'http://localhost:3000/'
+const REDIRECT_URI = window.location.origin.toString() + '/'
+
 const SCOPES = [
   'user-read-currently-playing',
   'user-read-playback-state',
