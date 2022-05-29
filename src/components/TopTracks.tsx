@@ -1,5 +1,7 @@
-import axios from 'axios'
 import React, { useState } from 'react'
+import axios from 'axios'
+
+import { AudioPlayer } from '@components'
 import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from '../App'
 
 interface TopTracksProps {
@@ -7,6 +9,7 @@ interface TopTracksProps {
 }
 
 const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
+  const [listOffset, setListOffset] = useState(0)
   const [topTracks, setTopTracks] = useState<SpotifyApi.TrackObjectFull[]>()
   const [nextUrl, setNextUrl] = useState<string>()
   const [previousUrl, setPreviousUrl] = useState<string>()
@@ -24,7 +27,8 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
         },
       }
     )
-    console.log('response.data :>> ', response.data)
+
+    setListOffset(response.data.offset)
     setTopTracks(response.data.items)
     if (response.data.next) setNextUrl(response.data.next)
     if (response.data.previous) setPreviousUrl(response.data.previous)
@@ -42,6 +46,8 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
         },
       }
     )
+
+    setListOffset(response.data.offset)
     setTopTracks(response.data.items)
     if (response.data.next) setNextUrl(response.data.next)
     if (response.data.previous) setPreviousUrl(response.data.previous)
@@ -59,6 +65,8 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
         },
       }
     )
+
+    setListOffset(response.data.offset)
     setTopTracks(response.data.items)
     if (response.data.next) setNextUrl(response.data.next)
     if (response.data.previous) setPreviousUrl(response.data.previous)
@@ -71,20 +79,9 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
       <button onClick={loadPreviousTopTracksPage}>Previous page</button>
       <button onClick={loadNextTopTracksPage}>Next page</button>
       <h1>Top tracks</h1>
-      <ul>
-        {topTracks?.map((track) => (
-          <li key={track.id}>
-            <p>
-              {track.name} <strong>by</strong> {track.artists[0].name}
-            </p>
-            <img width={150} src={track.album.images[0].url} alt='' />
-            <audio controls>
-              <source src={track.preview_url || ''} type='audio/mp3' />
-            </audio>
-            <br />
-          </li>
-        ))}
-      </ul>
+      {topTracks?.map((track, index) => (
+        <AudioPlayer key={track.id} track={track} index={listOffset + index + 1} />
+      ))}
     </>
   )
 }
