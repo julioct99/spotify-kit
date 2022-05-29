@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useRef } from 'react'
-import { AuthObject, BASE_SPOTIFY_API_URI } from './App'
+import { AuthObject, BASE_SPOTIFY_API_URI } from '../App'
 
 interface PlaylistReverserProps {
   auth: AuthObject

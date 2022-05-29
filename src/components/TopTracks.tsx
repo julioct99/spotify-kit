@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from './App'
+import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from '../App'
 
 interface TopTracksProps {
   auth: AuthObject
