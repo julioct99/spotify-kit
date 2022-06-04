@@ -15,18 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["spotify-api", "node"],
-    "baseUrl": "./src",
-    "paths": {
-      "@types": ["shared/types"],
-      "@components": ["components"],
-      "@components/layout": ["components/layout"],
-      "@pages": ["pages"],
-      "@settings": ["shared/settings"],
-      "@fetchers": ["shared/api/fetchers"],
-      "@queries": ["shared/api/queries"],
-      "@urls": ["shared/api/urls"]
-    }
+    "types": ["spotify-api", "node"]
   },
   "include": ["src"]
 }

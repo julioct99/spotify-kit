@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import { AudioPlayer } from '@components'
 import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from '../App'
 import { Button, useTheme } from '@mui/material'
+import AudioPlayer from './AudioPlayer'
 
 interface TopTracksProps {
   auth: AuthObject

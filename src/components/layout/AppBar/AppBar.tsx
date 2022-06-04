@@ -2,8 +2,7 @@ import { IconButton, styled, Toolbar } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import Typography from '@mui/material/Typography'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-
-import { LayoutSettings } from '@settings'
+import { LayoutSettings } from '../../../shared/settings'
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean

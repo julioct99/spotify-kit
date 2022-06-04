@@ -7,7 +7,7 @@ import {
   SelectChangeEvent,
   useTheme,
 } from '@mui/material'
-import { Queries } from '@queries'
+import { Queries } from '../../shared/api/queries'
 
 interface PlaylistSelectorProps {
   onPlaylistSelect: (playlist: SpotifyApi.PlaylistObjectFull) => void

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { MiniDrawer } from '@components/layout'
+import MiniDrawer from '../Drawer/Drawer'
 
 interface LayoutProps {
   children: JSX.Element

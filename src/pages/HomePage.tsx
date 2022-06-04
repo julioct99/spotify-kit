@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-import { PlaylistReverser, TopTracks } from '@components'
 import { Button } from '@mui/material'
+import { TopTracks, PlaylistReverser } from '../components'
 
 const BASE_SPOTIFY_ACCOUNTS_URI = 'https://accounts.spotify.com'
 const AUTHORIZE_ENDPOINT = `${BASE_SPOTIFY_ACCOUNTS_URI}/authorize`

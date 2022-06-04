@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
 import { AuthObject, BASE_SPOTIFY_API_URI } from '../App'
-import { PlaylistSelector } from '@components'
+import PlaylistSelector from './selectors/PlaylistSelector'
 
 interface PlaylistReverserProps {
   auth: AuthObject

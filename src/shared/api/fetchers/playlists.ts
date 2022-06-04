@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-import { RestUrls } from '@urls'
+import { RestUrls } from '../urls'
 
 export const fetchUserPlaylists = async (playlistId: string) => {
   const url = `${RestUrls.playlists.getUserPlaylists(playlistId)}`

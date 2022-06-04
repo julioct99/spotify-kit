@@ -1,7 +1,6 @@
 import { useQuery } from 'react-query'
-
-import { Fetchers } from '@fetchers'
-import { ApiSettings } from '@settings'
+import { ApiSettings } from '../../settings'
+import { Fetchers } from '../fetchers'
 
 export const useCurrentUserPlaylists = () => {
   return useQuery<SpotifyApi.PagingObject<SpotifyApi.PlaylistObjectFull>>(

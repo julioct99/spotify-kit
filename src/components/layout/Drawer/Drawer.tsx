@@ -5,12 +5,11 @@ import MuiDrawer from '@mui/material/Drawer'
 import CssBaseline from '@mui/material/CssBaseline'
 import { Container } from '@mui/material'
 
-import { LayoutSettings } from '@settings'
-
-import { AppBar } from '@components/layout'
 import { MAIN_MENU_ITEMS } from './menuItems'
 import DrawerItems from './DrawerItems'
 import DrawerHeader from './DrawerHeader'
+import AppBar from '../AppBar/AppBar'
+import { LayoutSettings } from '../../../shared/settings'
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: LayoutSettings.DRAWER_WIDTH,

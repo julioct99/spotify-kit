@@ -1,10 +1,10 @@
-import { HomePage } from '@pages'
-import { Layout } from '@components/layout'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import axios from 'axios'
 
 import { getSpotifyToken } from './shared/utils/token'
+import { Layout } from './components/layout'
+import { HomePage } from './pages'
 
 export const BASE_SPOTIFY_API_URI = 'https://api.spotify.com/v1'
 export const MY_TOP_TRACKS_ENDPOINT = `${BASE_SPOTIFY_API_URI}/me/top/tracks/?time_range=long_term`
