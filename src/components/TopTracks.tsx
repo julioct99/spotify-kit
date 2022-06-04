@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { AudioPlayer } from '@components'
 import { AuthObject, MY_TOP_TRACKS_ENDPOINT } from '../App'
+import { Button, useTheme } from '@mui/material'
 
 interface TopTracksProps {
   auth: AuthObject
@@ -13,6 +14,8 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
   const [topTracks, setTopTracks] = useState<SpotifyApi.TrackObjectFull[]>()
   const [nextUrl, setNextUrl] = useState<string>()
   const [previousUrl, setPreviousUrl] = useState<string>()
+
+  const theme = useTheme()
 
   const token = auth.access_token
   const tokenType = auth.token_type
@@ -75,9 +78,19 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
   return (
     <>
       <h1>Spotify Login</h1>
-      <button onClick={loadTopTracks}>Load Top Tracks</button>
-      <button onClick={loadPreviousTopTracksPage}>Previous page</button>
-      <button onClick={loadNextTopTracksPage}>Next page</button>
+      <Button
+        variant='contained'
+        sx={{ marginRight: theme.spacing(2) }}
+        onClick={loadTopTracks}
+      >
+        Load Top Tracks
+      </Button>
+      <Button variant='outlined' onClick={loadPreviousTopTracksPage}>
+        Previous page
+      </Button>
+      <Button variant='outlined' onClick={loadNextTopTracksPage}>
+        Next page
+      </Button>
       <h1>Top tracks</h1>
       {topTracks?.map((track, index) => (
         <AudioPlayer key={track.id} track={track} index={listOffset + index + 1} />
