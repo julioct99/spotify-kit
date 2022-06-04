@@ -22,7 +22,10 @@
       "@components": ["components"],
       "@components/layout": ["components/layout"],
       "@pages": ["pages"],
-      "@settings": ["shared/settings"]
+      "@settings": ["shared/settings"],
+      "@fetchers": ["shared/api/fetchers"],
+      "@queries": ["shared/api/queries"],
+      "@urls": ["shared/api/urls"]
     }
   },
   "include": ["src"]

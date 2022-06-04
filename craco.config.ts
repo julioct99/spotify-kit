@@ -8,6 +8,9 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@types': path.resolve(__dirname, 'src/shared/types'),
+      '@fetchers': path.resolve(__dirname, 'src/shared/api/fetchers'),
+      '@queries': path.resolve(__dirname, 'src/shared/api/queries'),
+      '@urls': path.resolve(__dirname, 'src/shared/api/urls'),
     },
   },
 }
