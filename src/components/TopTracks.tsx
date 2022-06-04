@@ -77,7 +77,6 @@ const TopTracks: React.FunctionComponent<TopTracksProps> = ({ auth }) => {
 
   return (
     <>
-      <h1>Spotify Login</h1>
       <Button
         variant='contained'
         sx={{ marginRight: theme.spacing(2) }}

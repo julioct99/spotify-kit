@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { PlaylistReverser, TopTracks } from '@components'
+import { Button } from '@mui/material'
 
 const BASE_SPOTIFY_ACCOUNTS_URI = 'https://accounts.spotify.com'
 const AUTHORIZE_ENDPOINT = `${BASE_SPOTIFY_ACCOUNTS_URI}/authorize`
@@ -73,7 +74,9 @@ function HomePage() {
           <PlaylistReverser auth={auth} />
         </>
       ) : (
-        <button onClick={login}>Login to Spotify</button>
+        <Button variant='contained' color='success' onClick={login}>
+          Login to Spotify
+        </Button>
       )}
     </>
   )
