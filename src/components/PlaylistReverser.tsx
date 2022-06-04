@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
 import { AuthObject, BASE_SPOTIFY_API_URI } from '../App'
-import CurrentUserPlaylistSelector from './selectors/CurrentUserPlaylistSelector'
+import { PlaylistSelector } from '@components'
 
 interface PlaylistReverserProps {
   auth: AuthObject
@@ -57,7 +57,7 @@ const PlaylistReverser: React.FunctionComponent<PlaylistReverserProps> = ({ auth
   return (
     <>
       <h1>Playlist reverser</h1>
-      <CurrentUserPlaylistSelector onPlaylistSelect={setSelectedPlaylist} />
+      <PlaylistSelector onPlaylistSelect={setSelectedPlaylist} />
       <Button variant='contained' onClick={reversePlaylist}>
         Reverse playlist
       </Button>

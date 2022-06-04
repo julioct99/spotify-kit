@@ -9,15 +9,15 @@ import {
 } from '@mui/material'
 import { Queries } from '@queries'
 
-interface CurrentUserPlaylistSelectorProps {
+interface PlaylistSelectorProps {
   onPlaylistSelect: (playlist: SpotifyApi.PlaylistObjectFull) => void
 }
 
 const LABEL_ID = 'playlist'
 
-const CurrentUserPlaylistSelector: React.FunctionComponent<
-  CurrentUserPlaylistSelectorProps
-> = ({ onPlaylistSelect }) => {
+const PlaylistSelector: React.FunctionComponent<PlaylistSelectorProps> = ({
+  onPlaylistSelect,
+}) => {
   const playlists = Queries.playlists.useCurrentUserPlaylists()
   const theme = useTheme()
 
@@ -62,4 +62,4 @@ const CurrentUserPlaylistSelector: React.FunctionComponent<
   )
 }
 
-export default CurrentUserPlaylistSelector
+export default PlaylistSelector

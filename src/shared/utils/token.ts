@@ -1,6 +1,16 @@
 export const getSpotifyToken = (): string => {
-  const token = localStorage.getItem('accessToken') || ''
-  const tokenType = localStorage.getItem('tokenType') || ''
-  console.log('SPOTIFY TOKEN:', `${tokenType} ${token}`)
-  return `${tokenType} ${token}`
+  const urlToken = getSpotifyAuthParamsFromUrl().access_token
+  const storageToken = localStorage.getItem('accessToken')
+  const token = urlToken || storageToken
+
+  return `Bearer ${token}`
+}
+
+const getSpotifyAuthParamsFromUrl = () => {
+  const hashContent = window.location.hash.substring(1)
+  const params = new URLSearchParams(hashContent)
+
+  let parsedParams: any = {}
+  params.forEach((value, key) => (parsedParams[key] = value))
+  return parsedParams
 }
