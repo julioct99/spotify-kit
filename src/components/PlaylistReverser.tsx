@@ -1,13 +1,16 @@
+import { Button } from '@mui/material'
 import axios from 'axios'
-import { useRef } from 'react'
+import { useState } from 'react'
 import { AuthObject, BASE_SPOTIFY_API_URI } from '../App'
+import CurrentUserPlaylistSelector from './selectors/CurrentUserPlaylistSelector'
 
 interface PlaylistReverserProps {
   auth: AuthObject
 }
 
 const PlaylistReverser: React.FunctionComponent<PlaylistReverserProps> = ({ auth }) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [selectedPlaylist, setSelectedPlaylist] =
+    useState<SpotifyApi.PlaylistObjectFull>()
 
   const token = auth.access_token
   const tokenType = auth.token_type
@@ -24,7 +27,9 @@ const PlaylistReverser: React.FunctionComponent<PlaylistReverserProps> = ({ auth
   }
 
   const reversePlaylist = async () => {
-    const playlistId = inputRef.current?.value || ''
+    if (!selectedPlaylist) return
+
+    const playlistId = selectedPlaylist?.id || ''
 
     const tracks = await getPlaylistTracks(playlistId)
     const trackUris = tracks
@@ -52,8 +57,10 @@ const PlaylistReverser: React.FunctionComponent<PlaylistReverserProps> = ({ auth
   return (
     <>
       <h1>Playlist reverser</h1>
-      <input ref={inputRef} type='text' />
-      <button onClick={reversePlaylist}>Reverse playlist</button>
+      <CurrentUserPlaylistSelector onPlaylistSelect={setSelectedPlaylist} />
+      <Button variant='contained' onClick={reversePlaylist}>
+        Reverse playlist
+      </Button>
     </>
   )
 }
