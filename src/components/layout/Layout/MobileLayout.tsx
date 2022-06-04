@@ -22,10 +22,6 @@ interface MobileLayoutProps {
 const MobileLayout: React.FunctionComponent<MobileLayoutProps> = ({ pageContent }) => {
   const [open, setOpen] = useState(false)
 
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-
   const handleDrawerClose = () => {
     setOpen(false)
   }
