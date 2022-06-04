@@ -68,7 +68,7 @@ const MiniDrawer: React.FunctionComponent<DrawerProps> = ({ pageContent }) => {
     <Box
       sx={{ display: 'flex' }}
       style={{ backgroundColor: '#E4E4E4', minHeight: '100vh', height: 'fit-content' }}
-      marginBottom={6}
+      paddingBottom={6}
     >
       <CssBaseline />
       <AppBar open={open} onDrawerOpen={handleDrawerOpen} />

@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { PlayArrow, Pause } from '@mui/icons-material'
-import { Chip, LinearProgress } from '@mui/material'
+import { Chip, LinearProgress, useMediaQuery } from '@mui/material'
 
 interface AudioPlayerProps {
   track: SpotifyApi.TrackObjectFull
@@ -25,6 +25,8 @@ const AudioPlayer: React.FunctionComponent<AudioPlayerProps> = ({ track, index }
   const playerRef = useRef<any>()
 
   const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  console.log('isMobile', isMobile)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,8 +54,8 @@ const AudioPlayer: React.FunctionComponent<AudioPlayerProps> = ({ track, index }
       sx={{
         display: 'flex',
         marginBottom: theme.spacing(2),
-        width: 'fit-content',
-        maxWidth: '100%',
+        // width: 'fit-content',
+        // maxWidth: '100%',
       }}
     >
       <ReactHowler
@@ -64,8 +66,16 @@ const AudioPlayer: React.FunctionComponent<AudioPlayerProps> = ({ track, index }
         loop={false}
         onEnd={togglePlayPause}
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ width: 400 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+        {isMobile && (
+          <CardMedia
+            component='img'
+            sx={{ height: 250, boxShadow: '-1px 0px 50px 1px #aaaaaa' }}
+            image={track.album.images[0]?.url}
+            alt='Live from space album cover'
+          />
+        )}
+        <CardContent>
           {index && (
             <Chip
               sx={{ marginBottom: theme.spacing(1) }}
@@ -81,7 +91,7 @@ const AudioPlayer: React.FunctionComponent<AudioPlayerProps> = ({ track, index }
             {track.artists[0].name}
           </Typography>
         </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1, pr: 1 }}>
           <IconButton onClick={togglePlayPause} aria-label='play/pause'>
             {isTrackPlaying ? <Pause sx={buttonSx} /> : <PlayArrow sx={buttonSx} />}
           </IconButton>
@@ -90,10 +100,10 @@ const AudioPlayer: React.FunctionComponent<AudioPlayerProps> = ({ track, index }
           </Box>
         </Box>
       </Box>
-      {!!track.album.images[0]?.url && (
+      {!!track.album.images[0]?.url && !isMobile && (
         <CardMedia
           component='img'
-          sx={{ width: 200, boxShadow: '-1px 0px 50px 1px #aaaaaa' }}
+          sx={{ width: '20%', height: '20%', boxShadow: '-1px 0px 50px 1px #aaaaaa' }}
           image={track.album.images[0]?.url}
           alt='Live from space album cover'
         />
