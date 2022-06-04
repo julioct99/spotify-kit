@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { getSpotifyToken } from './shared/utils/token'
 import { Layout } from './components/layout'
-import { HomePage } from './pages'
+import AppRoutes from './components/AppRoutes'
 
 export const BASE_SPOTIFY_API_URI = 'https://api.spotify.com/v1'
 export const MY_TOP_TRACKS_ENDPOINT = `${BASE_SPOTIFY_API_URI}/me/top/tracks/?time_range=long_term`
@@ -24,7 +24,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Layout>
-          <HomePage />
+          <AppRoutes />
         </Layout>
       </BrowserRouter>
     </QueryClientProvider>
