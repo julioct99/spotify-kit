@@ -5,11 +5,13 @@ import { DrawerMenuItem } from '../../../shared/types/drawerMenuItem'
 interface DrawerItemsProps {
   items: DrawerMenuItem[]
   drawerOpen: boolean
+  onItemClick: () => void
 }
 
 const DrawerItems: React.FunctionComponent<DrawerItemsProps> = ({
   items,
   drawerOpen,
+  onItemClick,
 }) => {
   const location = useLocation()
 
@@ -23,8 +25,9 @@ const DrawerItems: React.FunctionComponent<DrawerItemsProps> = ({
             component={Link}
             to={item.link}
             title={drawerOpen ? '' : item.name}
-            button
             key={item.name}
+            onClick={onItemClick}
+            button
           >
             <ListItemIcon>
               <item.icon />

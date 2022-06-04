@@ -3,7 +3,7 @@ import { styled, Theme, CSSObject } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import MuiDrawer from '@mui/material/Drawer'
 import CssBaseline from '@mui/material/CssBaseline'
-import { Container } from '@mui/material'
+import { Container, useMediaQuery, useTheme } from '@mui/material'
 
 import { MAIN_MENU_ITEMS } from './menuItems'
 import DrawerItems from './DrawerItems'
@@ -56,12 +56,19 @@ interface DrawerProps {
 const MiniDrawer: React.FunctionComponent<DrawerProps> = ({ pageContent }) => {
   const [open, setOpen] = useState(false)
 
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   const handleDrawerOpen = () => {
     setOpen(true)
   }
 
   const handleDrawerClose = () => {
     setOpen(false)
+  }
+
+  const handleDrawerItemClick = () => {
+    if (isMobile) handleDrawerClose()
   }
 
   return (
@@ -74,7 +81,11 @@ const MiniDrawer: React.FunctionComponent<DrawerProps> = ({ pageContent }) => {
       <AppBar open={open} onDrawerOpen={handleDrawerOpen} />
       <Drawer variant='permanent' open={open}>
         <DrawerHeader onDrawerClose={handleDrawerClose} />
-        <DrawerItems drawerOpen={open} items={MAIN_MENU_ITEMS} />
+        <DrawerItems
+          onItemClick={handleDrawerItemClick}
+          drawerOpen={open}
+          items={MAIN_MENU_ITEMS}
+        />
       </Drawer>
       <Box component='main' sx={{ flexGrow: 1, p: 3 }} marginTop={10}>
         <Container>{pageContent}</Container>
